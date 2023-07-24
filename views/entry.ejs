@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid mt-3">
+    <div class="card">
+        <div class="card-header">
+          <%= post.time %>
+        </div>
+        <div class="card-body">
+          <p>
+            <%= post.content %>
+          </p>
+        </div>
+        <div class="card-footer">
+            <a href="/compose/<%= post.time %>">
+                <button class="btn btn-primary btn-block w-25 mx-0">Add Entry</button>
+            </a>
+        </div>
+      </div>
+</div>
+
+<%- include('partials/footer') %>
