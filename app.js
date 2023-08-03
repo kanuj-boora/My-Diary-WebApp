@@ -1,8 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const {CanvasRenderService} = require('chartjs-node-canvas');
+const {Chart} = import('chart.js');
 
 const app = express();
 const port = 3000;
+
+// const width = 1000;
+// const height = 1000;
+// const chartCallback = (ChartJS) => {
+//   console.log('chart built');
+// }
+
+// const canvasRenderService = new CanvasRenderService(width, height, chartCallback);
 
 app.set("view engine", "ejs");
 
@@ -160,6 +170,24 @@ const spawn = require("child_process").spawn;
 app.get("/analysis", (req, res) => {
   GetPythonData(posts, (result) => {
     result = JSON.parse(result);
+
+    // (async function() {
+    //   new Chart(
+    //     document.getElementById('pos-neg-chart'),
+    //     {
+    //       type: 'bar',
+    //       data: {
+    //         labels: ['pos-sentiment'],
+    //         datasets: [
+    //           {
+    //             data: result.map(row=>row.data[1])
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   );
+    // })();
+
     res.render('analysis', {posts: result});
   });
   // GetPythonData(posts).then((result) => {
@@ -190,3 +218,8 @@ app.get("/logout", (req, res) => {
 app.listen(port, () => {
   console.log(`Example listening on port: ${port}`);
 });
+
+
+// Add summary of diary entries
+// Overall activity category
+// travel locations
